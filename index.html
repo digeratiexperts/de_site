@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Notebook Flipper - Magazine Style</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📓 Digital Notebook Flipper</h1>
+            <p>Upload and view your documents in magazine-style flip format</p>
+        </header>
+
+        <!-- Upload Section -->
+        <div id="upload-section" class="upload-section">
+            <div class="upload-box">
+                <div class="upload-icon">📁</div>
+                <h2>Upload Your Document</h2>
+                <p>Supports PDF, Word (.docx), and PowerPoint (.pptx) files</p>
+                <input type="file" id="file-input" accept=".pdf,.doc,.docx,.ppt,.pptx" hidden>
+                <button id="upload-btn" class="btn-primary">Choose File</button>
+                <div id="file-info" class="file-info"></div>
+            </div>
+
+            <!-- Sample Documents -->
+            <div class="sample-section">
+                <h3>Or try a sample:</h3>
+                <button class="btn-secondary sample-btn" data-sample="sample">Load Sample PDF</button>
+            </div>
+        </div>
+
+        <!-- Flipbook Viewer -->
+        <div id="viewer-section" class="viewer-section" style="display: none;">
+            <div class="viewer-controls">
+                <button id="prev-btn" class="control-btn" title="Previous Page">
+                    <span>◀</span>
+                </button>
+                <div class="page-info">
+                    <span id="current-page">1</span> / <span id="total-pages">0</span>
+                </div>
+                <button id="next-btn" class="control-btn" title="Next Page">
+                    <span>▶</span>
+                </button>
+                <button id="close-btn" class="control-btn close-btn" title="Close Document">
+                    <span>✕</span>
+                </button>
+            </div>
+
+            <div id="flipbook-container" class="flipbook-container">
+                <div id="flipbook" class="flipbook">
+                    <!-- Pages will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="navigation-hint">
+                💡 Click on page edges to flip, or use arrow keys
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading document...</p>
+        </div>
+    </div>
+
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>
